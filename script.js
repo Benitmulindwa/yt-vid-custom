@@ -78,8 +78,8 @@
     player.ready(function() {
       // 1. Add floating corner watermark
       player.addChild('CustomWatermark', {
-        text: '★ PRO PLAYER',
-        url: 'https://example.com'
+        text: '▶ BLACK BORED',
+        url: 'https://bored.black/'
       });
 
       // 2. Add custom star button to the right side of the control bar
