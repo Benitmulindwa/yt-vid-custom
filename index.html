@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Video.js YouTube Player</title>
+
+  <!-- 1. Video.js Base CSS -->
+  <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet"/>
+
+</head>
+<body>
+
+  <div class="player-container">
+    <video
+      id="my-youtube-player"
+      class="video-js vjs-theme-custom"
+      ></video>
+  </div>
+
+  <!-- 2. Video.js & YouTube Plugin Scripts -->
+  <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+  <script src="https://unpkg.com/videojs-youtube@3.0.1/dist/Youtube.min.js"></script>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

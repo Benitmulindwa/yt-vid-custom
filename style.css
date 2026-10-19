@@ -1,0 +1,160 @@
+body {
+      background-color: #0f172a;
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    .player-container {
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    /* =========================================
+       1. YOUTUBE CROP TRICK (HIDES "MORE VIDEOS")
+       ========================================= */
+    .video-js {
+      overflow: hidden;
+    }
+
+    .video-js .vjs-tech {
+      height: 300% !important;
+      top: -100% !important;
+      pointer-events: none; /* Prevents clicking any hidden YouTube links */
+    }
+
+    /* Hide the video frame when ended so YouTube's end-screen grid never flashes */
+    .video-js.vjs-ended .vjs-tech {
+      opacity: 0;
+    }
+
+    /* =========================================
+       2. CUSTOM THEME & COLORS
+       ========================================= */
+    .video-js.vjs-theme-custom {
+      --primary-accent: #ff3366;
+      --bar-bg: rgba(15, 23, 42, 0.85);
+      font-size: 12px;
+      color: #ffffff;
+    }
+
+    /* Circular, Centered Big Play Button */
+    .vjs-theme-custom .vjs-big-play-button {
+      width: 72px;
+      height: 72px;
+      line-height: 72px;
+      border-radius: 50%;
+      background-color: var(--primary-accent);
+      border: none;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .vjs-theme-custom:hover .vjs-big-play-button,
+    .vjs-theme-custom .vjs-big-play-button:focus {
+      background-color: #e6194d;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    /* Show Big Play Button when paused */
+    .vjs-theme-custom.vjs-paused .vjs-big-play-button {
+      display: block;
+    }
+
+    /* Control Bar Styling */
+    .vjs-theme-custom .vjs-control-bar {
+      background-color: var(--bar-bg);
+      backdrop-filter: blur(8px);
+      height: 46px;
+      padding: 0 10px;
+      align-items: center;
+    }
+
+    /* Top-Edge Floating Scrubber (YouTube Style) */
+    .vjs-theme-custom .vjs-progress-control {
+      position: absolute;
+      top: -6px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 6px;
+    }
+
+    .vjs-theme-custom .vjs-play-progress,
+    .vjs-theme-custom .vjs-volume-level {
+      background-color: var(--primary-accent);
+    }
+
+    .vjs-theme-custom .vjs-load-progress,
+    .vjs-theme-custom .vjs-slider {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Layout Adjustments: Show Current Time / Duration & Spacer */
+    .vjs-theme-custom .vjs-current-time,
+    .vjs-theme-custom .vjs-time-divider,
+    .vjs-theme-custom .vjs-duration {
+      display: flex;
+      align-items: center;
+      padding: 0 3px;
+    }
+
+    .vjs-theme-custom .vjs-remaining-time {
+      display: none;
+    }
+
+    .vjs-theme-custom .vjs-custom-control-spacer {
+      display: flex;
+      flex: 1 1 auto;
+    }
+
+    /* =========================================
+       3. CUSTOM BUTTON & WATERMARK STYLES
+       ========================================= */
+    /* Custom Control Bar Button (e.g., Reset/Loop or Custom Action) */
+    .video-js .vjs-custom-action-btn .vjs-icon-placeholder::before {
+      content: "★";
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-js .vjs-custom-action-btn {
+      cursor: pointer;
+    }
+
+    /* Floating Top-Right Watermark */
+    .video-js .vjs-custom-watermark {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 2;
+      background: rgba(15, 23, 42, 0.75);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 12px;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      opacity: 0.85;
+      transition: opacity 0.3s ease, background 0.2s ease;
+      pointer-events: auto;
+    }
+
+    .video-js .vjs-custom-watermark:hover {
+      opacity: 1;
+      background: var(--primary-accent);
+    }
+
+    /* Fade out watermark when user is inactive during playback */
+    .video-js.vjs-user-inactive.vjs-playing .vjs-custom-watermark {
+      opacity: 0.2;
+    }
